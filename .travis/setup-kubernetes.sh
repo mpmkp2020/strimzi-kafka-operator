@@ -85,7 +85,7 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     touch $HOME/.kube/config
 
     docker run -d -p 5000:5000 registry
-    #sudo echo "deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main" >> /etc/apt/sources.list
+    sudo echo "deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main" >> /etc/apt/sources.list
     sudo apt update
     sudo apt-get -y install linux-image-`uname -r`
     #sudo apt-get -y install --reinstall linux-image-`uname -r`
