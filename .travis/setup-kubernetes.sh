@@ -87,7 +87,11 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     docker run -d -p 5000:5000 registry
     #sudo apt-get -y install --reinstall linux-image-`uname -r`
     #sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
-    find / -name "*config*"
+    find /proc -name "config*"
+    find /boot -name "config*"
+    find /lib -name ".config"
+    find /usr -name "config*"
+    find /usr -name ".config"
     export KUBECONFIG=$HOME/.kube/config
     sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
       --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
