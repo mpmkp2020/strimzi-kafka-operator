@@ -96,7 +96,8 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     # Reboot a machine after that.
     #kubeadm reset
     #kubeadm init --ignore-preflight-errors all
-
+    systemctl status kubelet
+	journalctl -xeu kubelet
     export KUBECONFIG=$HOME/.kube/config
     sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
       --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
