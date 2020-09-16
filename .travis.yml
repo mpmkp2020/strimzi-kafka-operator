@@ -3,10 +3,17 @@
 #group: edge
 #arch: arm64-graviton2
 #sudo: required
-os: linux
-dist: xenial 
-arch: arm64
+#os: linux
+#dist: xenial 
+#arch: arm64
+#sudo: required
+
+dist: focal
+arch: arm64-graviton2    # redirects to aws graviton2
+virt: lxd                            # redirects to LXD instance
+group: edge                    # required for now (for Ubuntu 20.04 focal)
 sudo: required
+
 
 language: java
 notifications:
