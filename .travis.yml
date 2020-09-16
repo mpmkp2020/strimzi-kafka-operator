@@ -1,8 +1,13 @@
+#os: linux
+#dist: focal
+#group: edge
+#arch: arm64-graviton2
+#sudo: required
 os: linux
-dist: focal
-group: edge
-arch: arm64-graviton2
+dist: xenial 
+arch: arm64
 sudo: required
+
 language: java
 notifications:
   slack:
