@@ -91,8 +91,11 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     #sudo apt-get -y install --reinstall linux-image-`uname -r`
     #sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
     ls /boot/config*
-    uname -r
-    find / -name "`uname -r`"
+    sudo swapoff -a
+    sudo sed -i '/ swap / s/^/#/' /etc/fstab
+    # Reboot a machine after that.
+    kubeadm reset
+    kubeadm init --ignore-preflight-errors all
 
     export KUBECONFIG=$HOME/.kube/config
     sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
