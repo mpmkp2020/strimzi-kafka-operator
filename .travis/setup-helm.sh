@@ -11,7 +11,8 @@ function install_helm2 {
     chmod 700 get_helm.sh
 
     echo "Installing helm 2..."
-    sudo ./get_helm.sh --version "${TEST_HELM2_VERSION}"
+    #sudo ./get_helm.sh --version "${TEST_HELM2_VERSION}"
+    bash -x ./get_helm.sh --version "${TEST_HELM2_VERSION}"
     sudo mv ${HELM_INSTALL_DIR}/helm ${HELM_INSTALL_DIR}/helm2
 
     echo "Verifying the installation of helm2 binary..."
