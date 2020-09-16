@@ -1,4 +1,6 @@
+os: linux
 dist: xenial
+group: edge
 sudo: required
 language: java
 notifications:
