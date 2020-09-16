@@ -7,11 +7,10 @@ notifications:
 
 arch:
     - amd64
-    - arm64
+    - arm64-graviton2
 
 jdk:
 - openjdk8
-- openjdk11
 services:
 - docker
 before_install:
