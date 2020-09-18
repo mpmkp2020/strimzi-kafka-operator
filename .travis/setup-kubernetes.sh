@@ -97,7 +97,7 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     #kubeadm reset
     #kubeadm init --ignore-preflight-errors all
     sudo apt-get -y remove kubelet --purge
-    sudo apt-get install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+    sudo apt-get install -y kubelet kubeadm kubectl --disable excludes=kubernetes
     #sudo systemctl enable --now kubelet
     #systemctl daemon-reload
     #systemctl restart kubelet
