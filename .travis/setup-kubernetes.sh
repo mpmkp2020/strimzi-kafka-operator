@@ -96,12 +96,17 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     # Reboot a machine after that.
     #kubeadm reset
     #kubeadm init --ignore-preflight-errors all
-    sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
-    sudo systemctl enable --now kubelet
-    systemctl daemon-reload
+    sudo apt-get -y remove kubelet --purge
+    sudo apt-get install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+    #sudo systemctl enable --now kubelet
+    #systemctl daemon-reload
+    #systemctl restart kubelet
+    sudo kubeadm config images pull
+    systemctl status kubelet
+    journalctl -xeu kubelet
+    systemctl daemon-reload 
+    systemctl enable kubelet 
     systemctl restart kubelet
-    
-    
 
     export KUBECONFIG=$HOME/.kube/config
     sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
