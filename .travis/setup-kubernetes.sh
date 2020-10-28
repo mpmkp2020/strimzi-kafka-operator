@@ -88,6 +88,7 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     sudo echo "deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main" >> /etc/apt/sources.list
     sudo apt update
     sudo apt-get -y install linux-image-`uname -r`
+    sudo apt-get -qq -y install conntrack
     export KUBECONFIG=$HOME/.kube/config
     #sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
     #  --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
@@ -116,8 +117,6 @@ elif [ "$TEST_CLUSTER" = "minishift" ]; then
     #export CHANGE_MINIKUBE_NONE_USER=true
     mkdir $HOME/.kube || true
     touch $HOME/.kube/config
-    sudo apt-get -qq -y update
-    sudo apt-get -qq -y install conntrack
     docker run -d -p 5000:5000 registry
 
     export KUBECONFIG=$HOME/.kube/config
