@@ -89,9 +89,10 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     sudo apt update
     sudo apt-get -y install linux-image-`uname -r`
     export KUBECONFIG=$HOME/.kube/config
-    sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
-      --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
-    sudo cat /etc/kubernetes/manifests/*
+    #sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
+    #  --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
+    sudo -E minikube start --vm-driver=none
+    sudo minikube status
     sudo chown -R travis: /home/travis/.minikube/
     sudo -E minikube addons enable default-storageclass
 
