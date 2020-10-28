@@ -116,7 +116,8 @@ elif [ "$TEST_CLUSTER" = "minishift" ]; then
     #export CHANGE_MINIKUBE_NONE_USER=true
     mkdir $HOME/.kube || true
     touch $HOME/.kube/config
-
+    sudo apt-get -qq -y update
+    sudo apt-get -qq -y install conntrack
     docker run -d -p 5000:5000 registry
 
     export KUBECONFIG=$HOME/.kube/config
