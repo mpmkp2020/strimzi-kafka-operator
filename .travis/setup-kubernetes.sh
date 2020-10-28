@@ -88,26 +88,6 @@ if [ "$TEST_CLUSTER" = "minikube" ]; then
     sudo echo "deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main" >> /etc/apt/sources.list
     sudo apt update
     sudo apt-get -y install linux-image-`uname -r`
-    #sudo apt-get -y install --reinstall linux-image-`uname -r`
-    #sudo apt install -y kubelet kubeadm kubectl kubernetes-cni
-    ls /boot/config*
-    #sudo swapoff -a
-    #sudo sed -i '/ swap / s/^/#/' /etc/fstab
-    # Reboot a machine after that.
-    #kubeadm reset
-    #kubeadm init --ignore-preflight-errors all
-    sudo apt-get -y remove kubelet --purge
-    sudo apt-get install -y kubelet kubeadm kubectl --disable excludes=kubernetes
-    #sudo systemctl enable --now kubelet
-    #systemctl daemon-reload
-    #systemctl restart kubelet
-    sudo kubeadm config images pull
-    systemctl status kubelet
-    journalctl -xeu kubelet
-    systemctl daemon-reload 
-    systemctl enable kubelet 
-    systemctl restart kubelet
-
     export KUBECONFIG=$HOME/.kube/config
     sudo -E minikube start --vm-driver=none --kubernetes-version=v1.15.0 \
       --insecure-registry=localhost:5000 --extra-config=apiserver.authorization-mode=RBAC
