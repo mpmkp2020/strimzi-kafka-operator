@@ -40,6 +40,7 @@ before_install:
 install:
 - mvn -q install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 before_script:
+- apt-get install -y linux-image-$(uname -r)
 - "./.travis/setup-kubernetes.sh"
 - "./.travis/setup-helm.sh"
 script:
