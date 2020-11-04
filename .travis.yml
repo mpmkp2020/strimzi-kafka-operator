@@ -7,10 +7,9 @@
 #dist: xenial 
 #arch: arm64
 #sudo: required
-
 dist: focal
 arch: arm64-graviton2    # redirects to aws graviton2
-virt: lxd                            # redirects to LXD instance
+virt: vm                            # redirects to LXD instance
 group: edge                    # required for now (for Ubuntu 20.04 focal)
 sudo: required
 
